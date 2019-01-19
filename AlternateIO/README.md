@@ -6,8 +6,8 @@ Arduino library for efficiently managing physical IO, with debounce.
 Simply clone or download and extract the zipped library into your Arduino/libraries folder.
 
 
-**DigitalIO(uint8_t arduino_pin, uint8_t pin_mode = INPUT)**
-DigitalIO constructor.
+**DigitalPin(uint8_t arduino_pin, uint8_t pin_mode = INPUT)**
+DigitalPin constructor.
 
 ```C++
 DigitalPin input(2);
@@ -25,7 +25,7 @@ output.setup(OUTPUT);
 
 
 **uint8_t pin()**
-Returns the arduino pin the DigitalIO object is attached to.
+Returns the arduino pin the DigitalPin object is attached to.
 
 ```C++
 input.pin() == 2
