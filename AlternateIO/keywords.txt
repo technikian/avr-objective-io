@@ -1,0 +1,12 @@
+DigitalPin	KEYWORD1
+Debouncer	KEYWORD1
+setup	KEYWORD2
+pin	KEYWORD2
+read	KEYWORD2
+lo	KEYWORD2
+hi	KEYWORD2
+write	KEYWORD2
+update	KEYWORD2
+state	KEYWORD2
+last_state	KEYWORD2
+change_state	KEYWORD2
