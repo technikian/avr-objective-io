@@ -120,8 +120,8 @@ public:
 	// may be used on output pins when ALTIO_RETAIN_OUTPUT_STATE is defined
 	inline uint8_t state() FORCE_INLINE ;
 	inline uint8_t last_state() FORCE_INLINE ;
-	bool change_state() FORCE_INLINE ;
-	void update() FORCE_INLINE ;
+	bool change_state() ;
+	void update() ;
 };
 
 // ----------------------------------------------------------------------------
@@ -137,7 +137,7 @@ private:
 	DigitalPin* _digital_io ;
 	uint8_t _status ;
 	uint16_t _t_debounce ;
-	uint32_t* _t_start = 0 ;
+	uint32_t* _t_start = nullptr ;
 
 	inline void _toggle_timer() ;
 	uint8_t _state(uint8_t updates_elapsed) ;
@@ -171,35 +171,35 @@ inline uint8_t DigitalPin::read()
 
 inline void DigitalPin::lo()
 {
-	#ifndef ALTIO_INVERT_OUTPUT
+#ifndef ALTIO_INVERT_OUTPUT
 	_lo();
-	#else
+#else
 	_hi();
-	#endif
-	#ifdef ALTIO_RETAIN_OUTPUT_STATE
+#endif
+#ifdef ALTIO_RETAIN_OUTPUT_STATE
 	_set_state(_ALTIO_INVERT_INPUT false);  // read functions only invert input
-	#endif
+#endif
 }
 
 inline void DigitalPin::hi()
 {
-	#ifndef ALTIO_INVERT_OUTPUT
+#ifndef ALTIO_INVERT_OUTPUT
 	_hi();
-	#else
+#else
 	_lo();
-	#endif
-	#ifdef ALTIO_RETAIN_OUTPUT_STATE
+#endif
+#ifdef ALTIO_RETAIN_OUTPUT_STATE
 	_set_state(_ALTIO_INVERT_INPUT true);
-	#endif
+#endif
 }
 
 inline void DigitalPin::write(uint8_t value)
 {
 	if(_ALTIO_INVERT_OUTPUT value) _hi();
 	else _lo();
-	#ifdef ALTIO_RETAIN_OUTPUT_STATE
+#ifdef ALTIO_RETAIN_OUTPUT_STATE
 	_set_state(_ALTIO_INVERT_INPUT value);
-	#endif
+#endif
 }
 
 inline uint8_t DigitalPin::state()

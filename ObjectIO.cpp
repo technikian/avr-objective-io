@@ -54,7 +54,7 @@ inline uint8_t* port_register_output(uint8_t port)
 
 //#ifdef _atmega328_
 
-static inline uint8_t _atmega328_::_read_pin(uint8_t arduino_pin)
+inline uint8_t _atmega328_::_read_pin(uint8_t arduino_pin)
 {
 	uint8_t port = arduino_pin_to_port(arduino_pin);
 	uint8_t mask = arduino_pin_to_mask(arduino_pin);
@@ -62,7 +62,7 @@ static inline uint8_t _atmega328_::_read_pin(uint8_t arduino_pin)
 	return LOW; // returning a bool isn't any faster
 }
 
-static inline void _atmega328_::_write_pin_lo(uint8_t arduino_pin)
+inline void _atmega328_::_write_pin_lo(uint8_t arduino_pin)
 {
 	if(arduino_pin >= NUMBER_OF_IO_PINS) return;
 	uint8_t port = arduino_pin_to_port(arduino_pin);
@@ -78,7 +78,7 @@ static inline void _atmega328_::_write_pin_lo(uint8_t arduino_pin)
 	SREG = oldSREG;
 }
 
-static inline void _atmega328_::_write_pin_hi(uint8_t arduino_pin)
+inline void _atmega328_::_write_pin_hi(uint8_t arduino_pin)
 {
 	if(arduino_pin >= NUMBER_OF_IO_PINS) return;
 	uint8_t port = arduino_pin_to_port(arduino_pin);
@@ -103,17 +103,17 @@ static inline void _atmega328_::_write_pin_hi(uint8_t arduino_pin)
 // ----------------------------------------------------------------------------
 // _mcu_ Class Functions
 
-static uint8_t _mcu_::read_pin(uint8_t arduino_pin)
+uint8_t _mcu_::read_pin(uint8_t arduino_pin)
 {
 	return _read_pin(arduino_pin);
 }
 
-static void _mcu_::write_pin_lo(uint8_t arduino_pin)
+void _mcu_::write_pin_lo(uint8_t arduino_pin)
 {
 	_write_pin_lo(arduino_pin);
 }
 
-static void _mcu_::write_pin_hi(uint8_t arduino_pin)
+void _mcu_::write_pin_hi(uint8_t arduino_pin)
 {
 	_write_pin_hi(arduino_pin);
 }
@@ -210,7 +210,7 @@ void DigitalPin::update()
 // ----------------------------------------------------------------------------
 // Debounce Class
 
-Debouncer::Debouncer(DigitalPin& digital_io, uint16_t debounce_len = ALTIO_DEFAULT_DEBOUNCE)
+Debouncer::Debouncer(DigitalPin& digital_io, uint16_t debounce_len)
 {
 	_digital_io = &digital_io;
 	setup(debounce_len);
@@ -221,7 +221,7 @@ inline void Debouncer::_toggle_timer()
 	if(_t_start) // if there is a timer already running...
 	{ // stop timer, failed to saturate debounce time
 		delete _t_start;
-		_t_start = 0;
+		_t_start = nullptr;
 	}
 	else
 	{ // otherwise start the debounce timer
@@ -270,7 +270,7 @@ void Debouncer::update()
 		if(millis() - *_t_start >= _t_debounce)
 		{ // if running timer has saturated debounce length
 			delete _t_start;
-			_t_start = 0;
+			_t_start = nullptr;
 		}
 	}
 	else
