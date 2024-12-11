@@ -1,5 +1,5 @@
-# AlternateIO
-Arduino library for efficiently managing physical IO, with debounce.
+# ObjectIO
+Arduino library for efficiently managing physical IO, with debounce.  Supposedly slightly faster than the standard Arduino digital IO functions (this hasn't been tested recently).
 
 
 # Usage

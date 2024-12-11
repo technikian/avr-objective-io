@@ -5,12 +5,12 @@
 // ----------------------------------------------------------------------------
 // Defines
 
-#define ALTERNATEIO_CPP
+#define OBJECTIO_CPP
 
 // ----------------------------------------------------------------------------
 // Includes
 
-#include "AlternateIO.h"
+#include "ObjectIO.h"
 #include "pins_arduino.h"
 //#include "Time.h"
 

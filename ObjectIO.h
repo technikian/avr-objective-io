@@ -1,13 +1,13 @@
 //
-// Version 1.0.0
+// Version 2
 // Alternative Arduino IO manager, includes debounce class
-// "Technician"
+// "technikker"
 //
 
 // ----------------------------------------------------------------------------
 // Header Guard
-#ifndef ALTERNATEIO_H
-#define ALTERNATEIO_H
+#ifndef OBJECTIO_H
+#define OBJECTIO_H
 
 // ----------------------------------------------------------------------------
 // Includes
@@ -162,7 +162,7 @@ public:
 // ----------------------------------------------------------------------------
 // Main Class Inlines
 
-#ifndef ALTERNATEIO_CPP
+#ifndef OBJECTIO_CPP
 
 inline uint8_t DigitalPin::read()
 {
@@ -221,7 +221,7 @@ inline uint8_t DigitalPin::last_state()
 // ----------------------------------------------------------------------------
 // Debounce Class Inlines
 
-#ifndef ALTERNATEIO_CPP
+#ifndef OBJECTIO_CPP
 
 inline uint8_t Debouncer::state(uint8_t updates_elapsed)
 {
@@ -242,4 +242,4 @@ inline uint8_t Debouncer::last_state()
 
 // --------------------------------------------------------------------------*/
 //#include "./AlternateIO.cpp"
-#endif
+#endif //OBJECTIO_H

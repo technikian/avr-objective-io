@@ -3,7 +3,7 @@
 #define ALTIO_INVERT_INPUT
 //#define ALTIO_INVERT_OUTPUT
 #define ARD_ALTIO_RETAIN_OUTPUT_STATE
-#include "AlternateIO.h"
+#include "ObjectIO.h"
 
 
 DigitalPin out(13);
